@@ -1,6 +1,6 @@
 /*
 
-¼³¹® Á¶»ç ÇÁ·Î±×·¥
+ì„¤ë¬¸ ì¡°ì‚¬ í”„ë¡œê·¸ë¨
 
 */
 
@@ -50,7 +50,7 @@ void gotoxy(int x, int y)
 
 /*
 
-¼³¹® Ãâ·Â°ú ÀÀ´äÀÚÀÇ ´äÀ» ÅØ½ºÆ® ÆÄÀÏ¿¡ ÀúÀåÇÏ´Â ÇÔ¼ö survey_input
+ì„¤ë¬¸ ì¶œë ¥ê³¼ ì‘ë‹µìì˜ ë‹µì„ í…ìŠ¤íŠ¸ íŒŒì¼ì— ì €ì¥í•˜ëŠ” í•¨ìˆ˜ survey_input
 
 */
 
@@ -66,7 +66,7 @@ void survey_input(void)
 
         count = survey_question_read(question, space);
 
-        fpw = fopen("Á¶»ç°á°ú.txt", "a");
+        fpw = fopen("ì¡°ì‚¬ê²°ê³¼.txt", "a");
 
         do
 
@@ -74,9 +74,9 @@ void survey_input(void)
 
                system("cls");
 
-               printf("°¢ ¼³¹®¿¡ ´ëÇØ ¹®Ç×ÀÇ ´äÀ» ÀÔ·ÂÇÏ°í EnterÇÏ½Ã¿À.\n");
+               printf("ê° ì„¤ë¬¸ì— ëŒ€í•´ ë¬¸í•­ì˜ ë‹µì„ ì…ë ¥í•˜ê³  Enterí•˜ì‹œì˜¤.\n");
 
-               printf("¹®Ç×ÀÇ ´äÀº ¼ıÀÚ¸¸ »ç¿ëÇÕ´Ï´Ù.\n\n");
+               printf("ë¬¸í•­ì˜ ë‹µì€ ìˆ«ìë§Œ ì‚¬ìš©í•©ë‹ˆë‹¤.\n\n");
 
                for (i = 0; i < count; i++)
 
@@ -100,7 +100,7 @@ void survey_input(void)
 
                printf("\n");
 
-               printf("¼³¹®Á¶»ç°¡ ³¡³µ½À´Ï´Ù. °è¼ÓÀº 1, Á¾·á´Â 0À» ÀÔ·Â ");
+               printf("ì„¤ë¬¸ì¡°ì‚¬ê°€ ëë‚¬ìŠµë‹ˆë‹¤. ê³„ì†ì€ 1, ì¢…ë£ŒëŠ” 0ì„ ì…ë ¥ ");
 
                yn = getch();
 
@@ -116,7 +116,7 @@ void survey_input(void)
 
 /*
 
-ÅØ½ºÆ® ÆÄÀÏÀ» ÀĞ¾î ¹è¿­¿¡ ÀúÀåÇÏ´Â ÇÔ¼ö survey_question_read
+í…ìŠ¤íŠ¸ íŒŒì¼ì„ ì½ì–´ ë°°ì—´ì— ì €ì¥í•˜ëŠ” í•¨ìˆ˜ survey_question_read
 
 */
 
@@ -130,7 +130,7 @@ int survey_question_read(char question[][100], char space[])
 
         int count = 0;
 
-        fpr = fopen("¼³¹®³»¿ë.txt", "r");
+        fpr = fopen("ì„¤ë¬¸ë‚´ìš©.txt", "r");
 
         while (!feof(fpr))
 
@@ -148,7 +148,7 @@ int survey_question_read(char question[][100], char space[])
 
         fclose(fpr);
 
-        return count; //¼³¹®ÀÇ °³¼ö¸¦ ¹İÈ¯
+        return count; //ì„¤ë¬¸ì˜ ê°œìˆ˜ë¥¼ ë°˜í™˜
 
 }
 

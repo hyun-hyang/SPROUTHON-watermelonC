@@ -5,7 +5,7 @@
 
 #define limit 10
 #define MAX_NAME_LEN 20
-int cnt;
+
 struct student
 {
     char name[MAX_NAME_LEN + 1];
@@ -14,9 +14,8 @@ struct student
     char mail[100];
     char password[100];
 };
-void join(struct student* info, char a[], int q);
-int login(struct student* info, char a[], int q);
-//void list(struct student* info);
+void join(struct student* info);
+void list(struct student* info);
 //void insert(struct student* info);
 //void covid19_self_exam(struct student* info);
 //void schedule_manage(struct student* info);
@@ -41,38 +40,29 @@ int main()
 
         if (i == 1)
         {
-            join(info, id, 0);
-            join(info, password, 1);
+            join(info);
+            i = 0;
         }
-        /*   if (i == 2)
-           {
-              list(info);
-           }
-           if (i == 3)
-           {
-              insert(info);
-           }
-           if (i == 4)
-           {
-              covid19_self_examination(info);
-           }
-           if (i == 5)
-           {
-              schedule_management(info);
-           } */
+        if (i == 2)
+        {
+            list(info);
+        }
+        /*  if (i == 3)
+          {
+             insert(info);
+          }
+          if (i == 4)
+          {
+             covid19_self_examination(info);
+          }
+          if (i == 5)
+          {
+             schedule_management(info);
+          } */
         if (i == 6)
         {
             break;
         }
-        struct student m[100];
-        int i;
-        FILE* fp;
-        fp = fopen("exampleFile.txt", "r");
-        for (int j = 0; j < 100; j++)
-        {
-            fscanf(fp, "%s %s %s %s %s", &m[j].name, &m[j].ID, &m[j].call, &m[j].mail, &m[j].password);
-        }
-        return 0;
     }
 }
 void join(struct student* info)
@@ -100,7 +90,6 @@ void join(struct student* info)
             printf("비밀번호 입력하시오: ");
             scanf("%s", info[i].password);
             printf("\n");
-            cnt++;
 
             FILE* fp;
             fp = fopen("exampleFile.txt", "a");
@@ -117,5 +106,39 @@ void join(struct student* info)
         }
         if (j == 2)
             break;
+    }
+}
+void list(struct student* info)
+{
+    int i, j;
+    printf("1. 전체 회원정보 조회 2. 개인 회원정보 조회\n");
+    scanf("%d", &i);
+    struct student m[100];
+    FILE* fp;
+    fp = fopen("exampleFile.txt", "r");
+    char tmp;
+    int cnt = 1;
+    if (fp == NULL) {
+        exit(0);
+    }
+    while (fscanf(fp, "%c", &tmp) != EOF) {
+        printf("%c", tmp);
+        if (tmp == '\n')
+            cnt++;
+    }
+    printf("\n\n라인의 개수=%d\n", cnt);
+    return 0;
+    for (int j = 0; j < cnt; j++)
+    {
+        fscanf(fp, "%s %s %s %s %s\n", &m[j].name, &m[j].ID, &m[j].call, &m[j].mail, &m[j].password);
+        fclose(fp);
+    }
+    
+    if (i == 1)
+    {
+        for (int j = 0; j < cnt; j++)
+        {
+            printf("이름:%s 학번:%s 전화번호:%s 이메일:%s 비밀번호:%s\n", &m[j].name, &m[j].ID, &m[j].call, &m[j].mail, &m[j].password);
+        }
     }
 }

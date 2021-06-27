@@ -1,0 +1,3 @@
+﻿  소스.c
+C:\Users\jimin\Documents\SPROUTHON-watermelonC\Project\소스.c(72,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+  Project.vcxproj -> C:\Users\jimin\Documents\SPROUTHON-watermelonC\Project\Debug\Project.exe

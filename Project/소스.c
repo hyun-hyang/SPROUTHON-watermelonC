@@ -30,7 +30,7 @@ int main()
 		printf("4. 코로나 자가검진 하기\n");
 		printf("5. 등교 일정 관리 하기\n");
 		printf("6. 종료\n");
-		printf("7. 로그인\n");ㅂ
+		printf("7. 로그인\n");
 		printf("번호를 입력하시오: ");
 		scanf("%d", &i);
 		printf("\n");

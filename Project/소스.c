@@ -24,14 +24,14 @@ int main()
 	{
 		struct student info[10];
 		int i;
-		printf("1. ÇĞ»ı È¸¿ø°¡ÀÔ\n");
-		printf("2. ÇĞ»ı È¸¿ø¸ñ·Ï È®ÀÎ\n");
-		printf("3. ÇĞ»ı È¸¿øÁ¤º¸ ¼öÁ¤\n");
-		printf("4. ÄÚ·Î³ª ÀÚ°¡°ËÁø ÇÏ±â\n");
-		printf("5. µî±³ ÀÏÁ¤ °ü¸® ÇÏ±â\n");
-		printf("6. Á¾·á\n");
-		printf("7. ·Î±×ÀÎ\n");
-		printf("¹øÈ£¸¦ ÀÔ·ÂÇÏ½Ã¿À: ");
+		printf("1. í•™ìƒ íšŒì›ê°€ì…\n");
+		printf("2. í•™ìƒ íšŒì›ëª©ë¡ í™•ì¸\n");
+		printf("3. í•™ìƒ íšŒì›ì •ë³´ ìˆ˜ì •\n");
+		printf("4. ì½”ë¡œë‚˜ ìê°€ê²€ì§„ í•˜ê¸°\n");
+		printf("5. ë“±êµ ì¼ì • ê´€ë¦¬ í•˜ê¸°\n");
+		printf("6. ì¢…ë£Œ\n");
+		printf("7. ë¡œê·¸ì¸\n");ã…‚
+		printf("ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì‹œì˜¤: ");
 		scanf("%d", &i);
 		printf("\n");
 
@@ -72,40 +72,40 @@ void join(struct student* info)
 	int i, j, k;
 	for (i = 0; i < 1001; i++)
 	{
-		printf("È¸¿ø°¡ÀÔÀ» °è¼Ó ÇÏ½Ã°Ú½À´Ï±î? 1.Yes 2.No\n");
+		printf("íšŒì›ê°€ì…ì„ ê³„ì† í•˜ì‹œê² ìŠµë‹ˆê¹Œ? 1.Yes 2.No\n");
 		scanf("%d", &j);
 
 		if (j == 1)
 		{
-			printf("ÀÌ¸§À» ÀÔ·ÂÇÏ½Ã¿À: ");
+			printf("ì´ë¦„ì„ ì…ë ¥í•˜ì‹œì˜¤: ");
 			scanf("%s", info[i].name);
 			printf("\n");
-			printf("ÇĞ¹øÀ» ÀÔ·ÂÇÏ½Ã¿À: ");
+			printf("í•™ë²ˆì„ ì…ë ¥í•˜ì‹œì˜¤: ");
 			scanf("%s", info[i].ID);
 			printf("\n");
-			printf("ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇÏ½Ã¿À: ");
+			printf("ì „í™”ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì‹œì˜¤: ");
 			scanf("%s", info[i].call);
 			printf("\n");
-			printf("ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇÏ½Ã¿À: ");
+			printf("ì´ë©”ì¼ì„ ì…ë ¥í•˜ì‹œì˜¤: ");
 			scanf("%s", info[i].mail);
 			printf("\n");
-			printf("ºñ¹Ğ¹øÈ£ ÀÔ·ÂÇÏ½Ã¿À (4ÀÚ¸® ¼ıÀÚ): ");
+			printf("ë¹„ë°€ë²ˆí˜¸ ì…ë ¥í•˜ì‹œì˜¤ (4ìë¦¬ ìˆ«ì): ");
 			scanf("%s", info[i].password);
 			printf("\n");
 			cnt++;
 			/*
 			FILE* fp;
-			fp = fopen("C:\\Users\\dltmd\\Desktop\\»õ½ÏÅæ\\exampleFile.txt", "a");
+			fp = fopen("C:\\Users\\dltmd\\Desktop\\ìƒˆì‹¹í†¤\\exampleFile.txt", "a");
 			if (fp == NULL) {
-				printf("½ÇÆĞ - Á¾·á\n");
+				printf("ì‹¤íŒ¨ - ì¢…ë£Œ\n");
 			}
 			fprintf(fp, "%d. ", i+1);
-			fprintf(fp, "ÀÌ¸§: %s ", info[i].name);
-			fprintf(fp, "ÇĞ¹ø: %s ", info[i].ID);
-			fprintf(fp, "ÀüÈ­¹øÈ£: %s ", info[i].call);
-			fprintf(fp, "ÀÌ¸ŞÀÏ : %s \n", info[i].mail);
+			fprintf(fp, "ì´ë¦„: %s ", info[i].name);
+			fprintf(fp, "í•™ë²ˆ: %s ", info[i].ID);
+			fprintf(fp, "ì „í™”ë²ˆí˜¸: %s ", info[i].call);
+			fprintf(fp, "ì´ë©”ì¼ : %s \n", info[i].mail);
 			fclose(fp);
-			printf("¿Ï·á\n");		*/
+			printf("ì™„ë£Œ\n");		*/
 		}
 		if (j == 2)
 			break;
@@ -113,22 +113,22 @@ void join(struct student* info)
 }
 void login(struct student* info)
 {
-	//ÇĞ¹ø ÀÔ·Â¹Ş°í ±×¿¡ µû¸¥ ÆĞ½º¿öµå ÀÔ·Â¹Ş´Âµ¥, ÀúÀåµÈ Á¤º¸¶û ÀÏÄ¡ÇØ¾ß‰Î
+	//í•™ë²ˆ ì…ë ¥ë°›ê³  ê·¸ì— ë”°ë¥¸ íŒ¨ìŠ¤ì›Œë“œ ì…ë ¥ë°›ëŠ”ë°, ì €ì¥ëœ ì •ë³´ë‘ ì¼ì¹˜í•´ì•¼Â‰
 	char Student_ID[10];
 	char password[5];
 
-	printf("ÇĞ¹øÀ» ÀÔ·ÂÇÏ½Ê½Ã¿À: ");
+	printf("í•™ë²ˆì„ ì…ë ¥í•˜ì‹­ì‹œì˜¤: ");
 	scanf("%s", Student_ID);
-	printf("\n ÆĞ½º¿öµå¸¦ ÀÔ·ÂÇÏ½Ê½Ã¿À: ");
+	printf("\n íŒ¨ìŠ¤ì›Œë“œë¥¼ ì…ë ¥í•˜ì‹­ì‹œì˜¤: ");
 	scanf("%s", password);
 
 	int ret = strcmp(Student_ID, password);
 	if (ret == 0)
 	{
-		printf("·Î±×ÀÎ¿¡ ¼º°øÇÏ¿´½À´Ï´Ù.\n");
+		printf("ë¡œê·¸ì¸ì— ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤.\n");
 	}
 	else
 	{
-		printf("·Î±×ÀÎ¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.\n");
+		printf("ë¡œê·¸ì¸ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.\n");
 	}
 }

@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <windows.h>
 
@@ -14,13 +15,16 @@ struct student
     char mail[100];
     char password[100];
 };
+struct student m[100];
+
 void join(struct student* info);
 void list(struct student* info);
-//void insert(struct student* info);
+void insert(struct student* info);
 //void covid19_self_exam(struct student* info);
 //void schedule_manage(struct student* info);
 int main()
 {
+    struct student m[100];
     char id[limit + 1] = "";
     char password[limit + 1] = "";
     int key_code;
@@ -47,11 +51,11 @@ int main()
         {
             list(info);
         }
-        /*  if (i == 3)
-          {
+        if (i == 3)
+        {
              insert(info);
-          }
-          if (i == 4)
+        }
+         /*( if (i == 4)
           {
              covid19_self_examination(info);
           }
@@ -113,7 +117,7 @@ void list(struct student* info)
     int i, j;
     printf("1. 전체 회원정보 조회 2. 개인 회원정보 조회\n");
     scanf("%d", &i);
-    struct student m[100];
+    
     FILE* fp;
     fp = fopen("exampleFile.txt", "r");
     char tmp;
@@ -126,19 +130,76 @@ void list(struct student* info)
         if (tmp == '\n')
             cnt++;
     }
-    printf("\n\n라인의 개수=%d\n", cnt);
-    return 0;
-    for (int j = 0; j < cnt; j++)
-    {
-        fscanf(fp, "%s %s %s %s %s\n", &m[j].name, &m[j].ID, &m[j].call, &m[j].mail, &m[j].password);
-        fclose(fp);
-    }
+    printf("cnt는 %d입니다.\n", cnt);
     
     if (i == 1)
     {
         for (int j = 0; j < cnt; j++)
         {
-            printf("이름:%s 학번:%s 전화번호:%s 이메일:%s 비밀번호:%s\n", &m[j].name, &m[j].ID, &m[j].call, &m[j].mail, &m[j].password);
+            fscanf(fp, "%s %s %s %s %s\n", &m[j].name, &m[j].ID, &m[j].call, &m[j].mail, &m[j].password);
+            fclose(fp);
+            printf("이름:%s 학번:%s 전화번호:%s 이메일:%s 비밀번호:%s\n", m[j].name, m[j].ID, m[j].call, m[j].mail, m[j].password);
+        }
+    }
+    else
+    {
+        char a[30];
+        int i;
+        printf("이름을 입력하시오:");
+        scanf("%s", a);
+        printf("\n");
+
+        for (i = 0; i < cnt; i++)
+        {
+            if (strcmp(a, m[i].name) == 0)
+            {
+                printf("이름:%s 학번:%s 전화번호:%s 이메일:%s 비밀번호:%s\n", & m[i].name, & m[i].ID, & m[i].call, & m[i].mail, & m[i].password);
+            }
+        }
+    }
+}
+void insert(struct student* info)
+{
+    char a[MAX_NAME_LEN + 1];
+    char b[100];
+    int i, j;
+    FILE* fp;
+    fp = fopen("exampleFile.txt", "r");
+    char tmp;
+    int cnt = 1;
+    if (fp == NULL) {
+        exit(0);
+    }
+    while (fscanf(fp, "%c", &tmp) != EOF) {
+        if (tmp == '\n')
+            cnt++;
+    }
+    struct student m[100];
+    for (int j = 0; j < cnt; j++)
+    {
+        fscanf(fp, "%s %s %s %s %s\n", &m[j].name, &m[j].ID, &m[j].call, &m[j].mail, &m[j].password);
+        fclose(fp);
+    }
+    printf("수정하실 회원의 이름을 입력하시오: ");
+    scanf("%s", &a);
+    printf("\n");
+    for (i = 0; i < cnt; i++)
+    {
+        printf(m[i].name);
+        if (strcmp(a, m[i].name) == 0)
+        {
+            
+            while (1)
+            {
+                printf("수정하실 정보는 무엇입니까? 1.이름 2. 학번 3. 전화번호 4.이메일 5. 비밀번호 6. 종료: ");
+                scanf("%d", &j);
+            }
+            if (j == 1)
+            {
+                printf("이름 입력: ");
+                scanf("%s", m[i].name);
+                printf("\n");
+            }
         }
     }
 }

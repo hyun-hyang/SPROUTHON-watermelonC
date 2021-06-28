@@ -3,7 +3,7 @@ void list(struct student* info)
     int i, j;
     printf("1. 전체 회원정보 조회 2. 개인 회원정보 조회\n");
     scanf("%d", &i);
-    struct student m[100];
+    
     FILE* fp;
     fp = fopen("exampleFile.txt", "r");
     char tmp;
@@ -16,7 +16,6 @@ void list(struct student* info)
         if (tmp == '\n')
             cnt++;
     }
-    printf("\n\n라인의 개수=%d\n", cnt);
     return 0;
     for (int j = 0; j < cnt; j++)
     {

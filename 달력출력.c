@@ -9,12 +9,12 @@ void print_cal(int start_day, int day_num);
 int main(void)
 {
     int yyyy, mm;
-    printf("¿¬µµ¸¦ ÀÔ·ÂÇÏ½Ê½Ã¿À: ");
+    printf("ì—°ë„ë¥¼ ì…ë ¥í•˜ì‹­ì‹œì˜¤: ");
     scanf("%d", &yyyy);
-    printf("¿ùÀ» ÀÔ·ÂÇÏ½Ê½Ã¿À: ");
+    printf("ì›”ì„ ì…ë ¥í•˜ì‹­ì‹œì˜¤: ");
     scanf("%d", &mm);
 
-    printf("\n          %d³â %d¿ù\n", yyyy, mm);// year³â month¿ù Å¸ÀÌÆ² Ãâ·Â
+    printf("\n          %dë…„ %dì›”\n", yyyy, mm);// yearë…„ monthì›” íƒ€ì´í‹€ ì¶œë ¥
     
     int start_day = get_day(yyyy, mm);
     int day_num = get_day_of_month(yyyy, mm);
@@ -41,13 +41,13 @@ int get_day(int yyyy, int mm)
         past = past + get_day_of_month(yyyy, m);
     return (1 + past) % 7;
 }
-int get_day_of_month(int yyyy, int mm) //´ŞÀÇ ÃÑ ³¯Â¥¼ö
+int get_day_of_month(int yyyy, int mm) //ë‹¬ì˜ ì´ ë‚ ì§œìˆ˜
 {
     int day_of_month[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
     day_of_month[2] += is_leaf_year(yyyy);
     return day_of_month[mm];
 }
-int is_leaf_year(int yyyy) //À±³â
+int is_leaf_year(int yyyy) //ìœ¤ë…„
 {
     if (yyyy % 400 == 0)
         return 1;

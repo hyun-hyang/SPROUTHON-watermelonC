@@ -1,33 +1,27 @@
 void list(struct student* info)
 {
     int i, j;
-    printf("1. 전체 회원정보 조회 2. 개인 회원정보 조회\n");
+    printf("전체 회원정보를 조회하시겠습니까? 1.Yes 2. No\n");
     scanf("%d", &i);
     
     FILE* fp;
     fp = fopen("exampleFile.txt", "r");
     char tmp;
-    int cnt = 1;
+    int cnt = 0;
     if (fp == NULL) {
         exit(0);
     }
-    while (fscanf(fp, "%c", &tmp) != EOF) {
-        printf("%c", tmp);
-        if (tmp == '\n')
-            cnt++;
-    }
-    return 0;
-    for (int j = 0; j < cnt; j++)
-    {
-        fscanf(fp, "%s %s %s %s %s\n", &m[j].name, &m[j].ID, &m[j].call, &m[j].mail, &m[j].password);
-        fclose(fp);
-    }
-    
     if (i == 1)
     {
-        for (int j = 0; j < cnt; j++)
+        while (fscanf(fp, "%c", &tmp) != EOF)
         {
-            printf("이름:%s 학번:%s 전화번호:%s 이메일:%s 비밀번호:%s\n", &m[j].name, &m[j].ID, &m[j].call, &m[j].mail, &m[j].password);
+            printf("%c", tmp);
+            if (tmp == '\n')
+                cnt++;
         }
+        printf("회원 수는 %d명입니다.\n", cnt);
+        printf("\n");
     }
+    else
+        exit(0);
 }

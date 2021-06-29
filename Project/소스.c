@@ -15,11 +15,18 @@ struct student
     char mail[100];
     char password[100];
 };
+struct survey
+{
+    int a1;
+    int a2;
+    int a3;
+    int a4;
+    int a5;
+};
 
 void join(struct student* info);
 void list(struct student* info, struct student* m);
-//void insert(struct student* info);
-//void covid19_self_exam(struct student* info);
+void covid19_self_exam(struct student* info, struct survey* sur);
 //void schedule_manage(struct student* info);
 int main()
 {
@@ -31,12 +38,11 @@ int main()
     {
         struct student info[10];
         int i;
-        printf("1. 학생 회원가입\n");
-        printf("2. 학생 회원목록 확인\n");
-        printf("3. 학생 회원정보 수정\n");
-        printf("4. 코로나 자가검진 하기\n");
-        printf("5. 등교 일정 관리 하기\n");
-        printf("6. 종료\n");
+        printf("1. 학생 정보 입력\n");
+        printf("2. 학생 목록 확인\n");
+        printf("3. 코로나 자가검진 하기\n");
+        printf("4. 등교 일정 관리 하기\n");
+        printf("5. 종료\n");
         printf("번호를 입력하시오: ");
         scanf("%d", &i);
         printf("\n");
@@ -46,28 +52,25 @@ int main()
             join(info);
             i = 0;
         }
-        if( i == 2)
+        if (i == 2)
         {
             list(info, m);
         }
-        /* (i == 3)
+        if (i == 3)
         {
-             insert(info, m);
+            covid19_self_exam(info, m);
         }
-         ( if (i == 4)
-          {
-             covid19_self_examination(info);
-          }
-          if (i == 5)
-          {
-             schedule_management(info);
-          } */
-        if (i == 6)
+        /*
+         if (i == 4)
+         {
+            schedule_management(info);
+         } */
+        if (i == 5)
         {
             break;
         }
     }
-    
+
 }
 void join(struct student* info)
 {
@@ -138,17 +141,14 @@ void list(struct student* info, struct student* m)
         fp = fopen("exampleFile.txt", "r");
         for (int k = 0; k < cnt; k++)
         {
-            
             fscanf(fp, "%s %s %s %s %s\n", &m[k].name, &m[k].ID, &m[k].call, &m[k].mail, &m[k].password);
             printf("이름:%s 학번:%s 전화번호:%s 이메일:%s 비밀번호:%s\n", m[k].name, m[k].ID, m[k].call, m[k].mail, m[k].password);
-
         }
         fclose(fp);
     }
     else
         exit(0);
 }
-
 /*
 void insert(struct student* info, struct student* m)
 {
@@ -168,7 +168,7 @@ void insert(struct student* info, struct student* m)
     }
     for (int j = 0; j < cnt; j++)
     {
-        fscanf(fp, "%s %d %d %s %s\n", &m[j].name, &m[j].ID, &m[j].call, &m[j].mail, &m[j].password);
+        fscanf(fp, "%s %s %s %s %s\n", &m[j].name, &m[j].ID, &m[j].call, &m[j].mail, &m[j].password);
         fclose(fp);
     }
     printf("수정하실 회원의 이름을 입력하시오: ");
@@ -179,7 +179,7 @@ void insert(struct student* info, struct student* m)
         printf(m[i].name);
         if (strcmp(a, m[i].name) == 0)
         {
-            
+
             while (1)
             {
                 printf("수정하실 정보는 무엇입니까? 1.이름 2. 학번 3. 전화번호 4.이메일 5. 비밀번호 6. 종료: ");
@@ -193,4 +193,46 @@ void insert(struct student* info, struct student* m)
             }
         }
     }
-} */
+}
+*/
+void covid19_self_exam(struct student* info, struct survey* sur)
+{
+    int a1 = 0;
+    int a3 = 0;
+    int a4 = 0;
+    int a5 = 0;
+    int a2 = 0;
+    puts("<설문조사>");
+    printf("각 설문에 대해 문항의 답을 입력하고 Enter를 누르십시오.\n");
+    printf("문항의 답은 1,2로 답해주십시오.\n");
+    printf("1. 학생의 몸에 열이 있나요? 1)37.5℃미만 2)37.5℃이상 및 발열감 ");
+    scanf("%d\n", &a1);
+    printf("2. 귀하에게 코로나19가 의심되는 증상이 있나요? 1)아니요 2)예 ");
+    scanf("%d\n", &a2);
+    printf("3. 귀하는 최근(14일 이내)해외여행을 다녀온 사실이 있나요? 1)아니요 2)예 ");
+    scanf("%d\n", &a3);
+    printf("4. 동거가족 중 최근(14일 이내) 해외여행을 다녀온 사실이 있나요? (단, 국제선 항공기 및 선박 승무원 등 직업특성상 매번 해외 입출국하고 의심증상이 없는 경우는 제외) 1)아니요 2)예 ");
+    scanf("%d\n", &a4);
+    printf("5. 동거가족 중 현재 자가격리 중인 가족이 있나요? 1)아니요 2)예 ");
+    scanf("%d\n", &a5);
+    printf("설문이 완료되었습니다.\n");
+    printf("답변: %d, %d, %d, %d, %d\n\n", a1, a2, a3, a4, a5);
+    if (a1 + a2 + a3 + a4 + a5 != 5)
+    {
+        printf("등교 거부\n");
+    }
+    else
+        printf("등교 가능\n");
+    FILE* fp;
+    fp = fopen("name_id.txt", "a");
+    if (fp == NULL) {
+        printf("실패 - 종료\n");
+    }
+    fprintf(fp, "1번: %d ", a1);
+    fprintf(fp, "2번: %d ", a2);
+    fprintf(fp, "3번: %d ", a3);
+    fprintf(fp, "4번: %d ", a4);
+    fprintf(fp, "5번: %d \n", a5);
+    fclose(fp);
+    printf("완료\n");
+}

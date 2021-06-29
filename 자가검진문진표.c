@@ -1,4 +1,4 @@
-void covid19_self_exam(struct student* info, struct student* m)
+void covid19_self_exam(struct student* info, struct survey* sur)
 {
     int a1 = 0;
     int a3 = 0;
@@ -26,4 +26,16 @@ void covid19_self_exam(struct student* info, struct student* m)
     }
     else
         printf("등교 가능\n");
+    FILE* fp;
+    fp = fopen("name_id.txt", "a");
+    if (fp == NULL) {
+        printf("실패 - 종료\n");
+    }
+    fprintf(fp, "1번: %d ", a1);
+    fprintf(fp, "2번: %d ", a2);
+    fprintf(fp, "3번: %d ", a3);
+    fprintf(fp, "4번: %d ", a4);
+    fprintf(fp, "5번: %d \n", a5);
+    fclose(fp);
+    printf("완료\n");
 }

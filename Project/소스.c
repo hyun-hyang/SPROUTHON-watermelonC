@@ -149,52 +149,6 @@ void list(struct student* info, struct student* m)
     else
         exit(0);
 }
-/*
-void insert(struct student* info, struct student* m)
-{
-    char a[MAX_NAME_LEN + 1];
-    char b[100];
-    int i, j;
-    FILE* fp;
-    fp = fopen("exampleFile.txt", "r");
-    char tmp;
-    int cnt = 1;
-    if (fp == NULL) {
-        exit(0);
-    }
-    while (fscanf(fp, "%c", &tmp) != EOF) {
-        if (tmp == '\n')
-            cnt++;
-    }
-    for (int j = 0; j < cnt; j++)
-    {
-        fscanf(fp, "%s %s %s %s %s\n", &m[j].name, &m[j].ID, &m[j].call, &m[j].mail, &m[j].password);
-        fclose(fp);
-    }
-    printf("수정하실 회원의 이름을 입력하시오: ");
-    scanf("%s", &a);
-    printf("\n");
-    for (i = 0; i < cnt; i++)
-    {
-        printf(m[i].name);
-        if (strcmp(a, m[i].name) == 0)
-        {
-
-            while (1)
-            {
-                printf("수정하실 정보는 무엇입니까? 1.이름 2. 학번 3. 전화번호 4.이메일 5. 비밀번호 6. 종료: ");
-                scanf("%d", &j);
-            }
-            if (j == 1)
-            {
-                printf("이름 입력: ");
-                scanf("%s", m[i].name);
-                printf("\n");
-            }
-        }
-    }
-}
-*/
 void covid19_self_exam(struct student* info, struct survey* sur)
 {
     int a1 = 0;
@@ -219,7 +173,7 @@ void covid19_self_exam(struct student* info, struct survey* sur)
     printf("답변: %d, %d, %d, %d, %d\n\n", a1, a2, a3, a4, a5);
     if (a1 + a2 + a3 + a4 + a5 != 5)
     {
-        printf("등교 거부\n");
+        printf("등교 불가능\n");
     }
     else
         printf("등교 가능\n");

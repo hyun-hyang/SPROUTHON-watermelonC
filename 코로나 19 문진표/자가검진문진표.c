@@ -22,7 +22,7 @@ void covid19_self_exam(struct student* info, struct survey* sur)
     printf("답변: %d, %d, %d, %d, %d\n\n", a1, a2, a3, a4, a5);
     if (a1 + a2 + a3 + a4 + a5 != 5)
     {
-        printf("등교 불\n");
+        printf("등교 불가능\n");
     }
     else
         printf("등교 가능\n");

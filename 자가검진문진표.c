@@ -1,154 +1,29 @@
-/*
-
-설문 조사 프로그램
-
-*/
-
-#include <stdio.h>
-
-#include <stdlib.h>
-
-#include <string.h>
-
-#include <conio.h>
-
-#include <Windows.h>
-
- 
-
-void survey_input(void);
-
-int survey_question_read(char question[][9000], char space[]);
-
-void gotoxy(int x, int y);
-
- 
-
-int main(void)
-
+void covid19_self_exam(struct student* info, struct student* m)
 {
-
-        survey_input();
-
-        return 0;
-
+    int a1 = 0;
+    int a3 = 0;
+    int a4 = 0;
+    int a5 = 0;
+    int a2 = 0;
+    puts("<설문조사>");
+    printf("각 설문에 대해 문항의 답을 입력하고 Enter를 누르십시오.\n");
+    printf("문항의 답은 1,2로 답해주십시오.\n");
+    printf("1. 학생의 몸에 열이 있나요? 1)37.5℃미만 2)37.5℃이상 및 발열감 ");
+    scanf("%d\n", &a1);
+    printf("2. 귀하에게 코로나19가 의심되는 증상이 있나요? 1)아니요 2)예 ");
+    scanf("%d\n", &a2);
+    printf("3. 귀하는 최근(14일 이내)해외여행을 다녀온 사실이 있나요? 1)아니요 2)예 ");
+    scanf("%d\n", &a3);
+    printf("4. 동거가족 중 최근(14일 이내) 해외여행을 다녀온 사실이 있나요? (단, 국제선 항공기 및 선박 승무원 등 직업특성상 매번 해외 입출국하고 의심증상이 없는 경우는 제외) 1)아니요 2)예 ");
+    scanf("%d\n", &a4);
+    printf("5. 동거가족 중 현재 자가격리 중인 가족이 있나요? 1)아니요 2)예 ");
+    scanf("%d\n", &a5);
+    printf("설문이 완료되었습니다.\n");
+    printf("답변: %d, %d, %d, %d, %d\n\n", a1, a2, a3, a4, a5);
+    if (a1 + a2 + a3 + a4 + a5 != 5)
+    {
+        printf("등교 거부\n");
+    }
+    else
+        printf("등교 가능\n");
 }
-
- 
-
-void gotoxy(int x, int y)
-
-{
-
-        COORD Pos = { x - 1, y - 1 };
-
-        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
-
-}
-
- 
-
-/*
-
-설문 출력과 응답자의 답을 텍스트 파일에 저장하는 함수 survey_input
-
-*/
-
-void survey_input(void)
-
-{
-
-        int i, answer[20], count;
-
-        char yn, question[9000][1000], space[10];
-
-        FILE *fpw;
-
-        count = survey_question_read(question, space);
-
-        fpw = fopen("조사결과.txt", "a");
-
-        do
-
-        {
-
-               system("cls");
-
-               printf("각 설문에 대해 문항의 답을 입력하고 Enter하시오.\n");
-
-               printf("문항의 답은 숫자만 사용합니다.\n\n");
-
-               for (i = 0; i < count; i++)
-
-                       printf("%d) %s\n", i + 1, question[i]);
-
-               for (i = 0; i < count; i++)
-
-               {
-
-                       fflush(stdin);
-
-                       gotoxy(space[i] + 4, i * 2 + 4);
-
-                       scanf("%d", &answer[i]);
-
-                       fprintf(fpw, "%d ", answer[i]);
-
-               }
-
-               fprintf(fpw, "\n");
-
-               printf("\n");
-
-               printf("설문조사가 끝났습니다. 계속은 1, 종료는 0을 입력 ");
-
-               yn = getch();
-
-               printf("\n");
-
-        } while (yn != '0');
-
-        fclose(fpw);
-
-}
-
- 
-
-/*
-
-텍스트 파일을 읽어 배열에 저장하는 함수 survey_question_read
-
-*/
-
-int survey_question_read(char question[][100], char space[])
-
-{
-
-        char chr[100];
-
-        FILE *fpr;
-
-        int count = 0;
-
-        fpr = fopen("설문내용.txt", "r");
-
-        while (!feof(fpr))
-
-        {
-
-               fgets(chr, 500, fpr);
-
-               space[count] = strlen(chr);
-
-               strcpy(question[count], chr);
-
-               count++;
-
-        }
-
-        fclose(fpr);
-
-        return count; //설문의 개수를 반환
-
-}
-
